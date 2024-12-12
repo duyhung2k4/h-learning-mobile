@@ -3,6 +3,7 @@ import 'package:h_learning_mobile/bloc/index.dart';
 import 'package:h_learning_mobile/config/prefs.dart';
 import 'package:h_learning_mobile/router/index.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:h_learning_mobile/ui/login/index.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -18,9 +19,11 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       builder: (context, child) {
         return MaterialApp(
-          initialRoute: "/login",
-          onGenerateRoute: (RouteSettings settings) =>
-              AppRouter.generateRouter(settings),
+          home: Navigator(
+            initialRoute: LoginScreen.url,
+            onGenerateRoute: (RouteSettings settings) =>
+                AppRouter.generateRouter(settings, context),
+          ),
           theme: ThemeData(
             textTheme: TextTheme(
               bodySmall: TextStyle(color: Color(0xFFFFFFFF), fontSize: 12.0.sp),

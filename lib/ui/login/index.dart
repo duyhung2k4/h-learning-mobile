@@ -5,6 +5,7 @@ import 'package:h_learning_mobile/components/button_custom/index.dart';
 import 'package:h_learning_mobile/components/loading_custom/index.dart';
 import 'package:h_learning_mobile/components/password_field_custom/index.dart';
 import 'package:h_learning_mobile/components/text_field_custom/index.dart';
+import 'package:h_learning_mobile/constant/router.dart';
 import 'package:h_learning_mobile/dto/request/auth.dart';
 import 'package:h_learning_mobile/query/api/auth.dart';
 import 'package:h_learning_mobile/ui/register/index.dart';
@@ -49,7 +50,7 @@ class _LoginScreen extends State<LoginScreen> {
       ));
 
       authBloc.add(LoginSuccess());
-      Navigator.of(context).pushNamed("/home");
+      Navigator.of(context).pushNamed(RouterName.tabHome);
     } catch (e) {
       authBloc.add(LoginFailure());
       print("Error login: $e");

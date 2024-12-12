@@ -13,12 +13,6 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreen extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: Container(
-          child: Text("Home"),
-        ),
-      ),
-    );
+    return Container(child: Text("Home"));
   }
 }
