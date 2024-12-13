@@ -16,7 +16,8 @@ class LoginScreen extends StatefulWidget {
   static const String url = "/login";
   LoginScreen({Key? key}) : super(key: key);
 
-  final formKey = GlobalKey<FormState>(debugLabel: "#login_form");
+  final cc = true;
+  final formKey = GlobalKey<FormState>();
 
   @override
   State<StatefulWidget> createState() {
@@ -66,89 +67,92 @@ class _LoginScreen extends State<LoginScreen> {
     double width = MediaQuery.of(context).size.width * 0.6;
 
     return SafeArea(
-        child: Scaffold(
-      backgroundColor: Color(0xFF000000),
-      body: Stack(
-        children: [
-          Form(
-            key: widget.formKey,
-            child: Center(
-              child: Container(
-                width: width,
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Container(
-                      margin: EdgeInsets.fromLTRB(0, 0, 0, 20),
-                      child: Center(
-                        child: Text(
-                          "Đăng nhập",
-                          style: TextStyle(
-                              fontSize: 28.0.sp, fontWeight: FontWeight.w600),
+      child: Scaffold(
+        backgroundColor: Color(0xFF000000),
+        body: Stack(
+          children: [
+            Form(
+              key: widget.formKey,
+              child: Center(
+                child: Container(
+                  width: width,
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        margin: EdgeInsets.fromLTRB(0, 0, 0, 20),
+                        child: Center(
+                          child: Text(
+                            "Đăng nhập",
+                            style: TextStyle(
+                                fontSize: 28.0.sp, fontWeight: FontWeight.w600),
+                          ),
                         ),
                       ),
-                    ),
-                    Container(
-                      margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
-                      child: TextFieldCustom(
-                        hintText: "Tên đăng nhập",
-                        label: "Tên đăng nhập",
-                        textController: usernameController,
+                      Container(
+                        margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                        child: TextFieldCustom(
+                          hintText: "Tên đăng nhập",
+                          label: "Tên đăng nhập",
+                          textController: usernameController,
+                        ),
                       ),
-                    ),
-                    Container(
-                      margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
-                      child: PasswordFieldCustom(
-                        hintText: "Mật khẩu",
-                        label: "Mật khẩu",
-                        obscureText: true,
-                        suffixIcon: Icon(Icons.lock),
-                        textController: passwordController,
+                      Container(
+                        margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                        child: PasswordFieldCustom(
+                          hintText: "Mật khẩu",
+                          label: "Mật khẩu",
+                          obscureText: true,
+                          suffixIcon: Icon(Icons.lock),
+                          textController: passwordController,
+                        ),
                       ),
-                    ),
-                    Container(
-                      margin: EdgeInsets.fromLTRB(0, 30, 0, 0),
-                      width: width,
-                      child: ButtonCustom(
-                        text: "Đăng nhập",
-                        onPressed: handleLogin,
+                      Container(
+                        margin: EdgeInsets.fromLTRB(0, 30, 0, 0),
+                        width: width,
+                        child: ButtonCustom(
+                          text: "Đăng nhập",
+                          onPressed: handleLogin,
+                        ),
                       ),
-                    ),
-                    Container(
-                      margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
-                      child: Center(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text("Bạn đã có tài khoản ? "),
-                            GestureDetector(
-                              onTap: gotoRegister,
-                              child: Text(
-                                "Đăng kí",
-                                style: TextStyle(
-                                  color: Color(0xFF8E06C2),
+                      Container(
+                        margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                        child: Center(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text("Bạn đã có tài khoản ? "),
+                              GestureDetector(
+                                onTap: gotoRegister,
+                                child: Text(
+                                  "Đăng kí",
+                                  style: TextStyle(
+                                    color: Color(0xFF8E06C2),
+                                  ),
+                                  softWrap: true,
                                 ),
-                                softWrap: true,
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
-                      ),
-                    )
-                  ],
+                      )
+                    ],
+                  ),
                 ),
               ),
             ),
-          ),
-          BlocConsumer<AuthBloc, AuthState>(
-            listener: (context, state) {},
-            builder: (context, state) {
-              return state.loadingLogin == true ? LoadingCustom() : Container();
-            },
-          ),
-        ],
+            BlocConsumer<AuthBloc, AuthState>(
+              listener: (context, state) {},
+              builder: (context, state) {
+                return state.loadingLogin == true
+                    ? LoadingCustom()
+                    : Container();
+              },
+            ),
+          ],
+        ),
       ),
-    ));
+    );
   }
 }

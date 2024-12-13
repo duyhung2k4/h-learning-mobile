@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:h_learning_mobile/components/tab_custom/index.dart';
 import 'package:h_learning_mobile/constant/router.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:h_learning_mobile/ui/account/index.dart';
 import 'package:h_learning_mobile/ui/courses/index.dart';
 import 'package:h_learning_mobile/ui/home/index.dart';
-import 'package:h_learning_mobile/ui/login/index.dart';
 import 'package:h_learning_mobile/ui/my_course/index.dart';
 
 class TabHome extends StatefulWidget {
@@ -20,13 +19,11 @@ class TabHome extends StatefulWidget {
 class _TabHome extends State<TabHome> {
   String curUrl = "/home-tab";
   final _navigatorKey = GlobalKey<NavigatorState>();
-  final _loginScreenKey = GlobalKey<State<LoginScreen>>();
 
   void changeScreen(String url) {
     setState(() {
       curUrl = url;
     });
-    print(_loginScreenKey.currentWidget?.key);
     _navigatorKey.currentState?.pushNamed(url);
   }
 

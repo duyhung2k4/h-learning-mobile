@@ -12,9 +12,10 @@ class AppRouter {
     switch (path) {
       case RouterName.login:
         return MaterialPageRoute(
-            builder: (context) => LoginScreen(
-                  key: GlobalKey<State<LoginScreen>>(),
-                ));
+          builder: (context) => LoginScreen(
+            key: GlobalKey<State<LoginScreen>>(),
+          ),
+        );
       case RouterName.register:
         return MaterialPageRoute(builder: (context) => RegisterScreen());
       case RouterName.tabHome:
