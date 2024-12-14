@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:h_learning_mobile/components/badge/index.dart';
+import 'package:h_learning_mobile/query/api/course.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -15,6 +16,17 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreen extends State<HomeScreen> {
+  @override
+  initState() {
+    super.initState();
+    _loadCourse();
+  }
+
+  Future<void> _loadCourse() async {
+    List courses = await CourseApi.getAllCourse();
+    print(courses);
+  }
+
   @override
   Widget build(BuildContext context) {
     double fullWidth = MediaQuery.of(context).size.width;

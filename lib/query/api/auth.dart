@@ -6,7 +6,7 @@ import 'package:h_learning_mobile/query/baseQuery.dart';
 import 'package:h_learning_mobile/query/endpoint/auth.dart';
 
 class AuthApi {
-  static Future login(LoginRequest payload) async {
+  static Future<dynamic> login(LoginRequest payload) async {
     Map<String, dynamic> result = await BaseQuery.query(BaseQueryPayload(
       data: payload.toJson(),
       queryParam: {},

@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 final dio = Dio();
 
@@ -6,7 +7,7 @@ class Respondata<T> {}
 
 class BaseQuery {
   static Future<Map<String, dynamic>> query(BaseQueryPayload payload) async {
-    String baseUrl = "http://172.17.10.173:10000";
+    String? baseUrl = dotenv.env["API_CORE_URL"];
     String endpointApi = payload.endpoint.url;
     String url = "$baseUrl/$endpointApi";
 

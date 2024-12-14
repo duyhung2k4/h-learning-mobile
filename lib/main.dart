@@ -4,9 +4,11 @@ import 'package:h_learning_mobile/config/prefs.dart';
 import 'package:h_learning_mobile/router/index.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:h_learning_mobile/ui/login/index.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await dotenv.load(fileName: ".env");
   await Prefs.init();
   runApp(RootBloc(child: MyApp()));
 }
