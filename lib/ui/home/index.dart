@@ -6,7 +6,6 @@ import 'package:h_learning_mobile/ui/home/info.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
 class HomeScreen extends StatefulWidget {
-  static const String url = "/home";
   HomeScreen({Key? key}) : super(key: key);
 
   @override

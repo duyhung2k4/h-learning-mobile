@@ -8,12 +8,11 @@ import 'package:h_learning_mobile/components/text_field_custom/index.dart';
 import 'package:h_learning_mobile/constant/router.dart';
 import 'package:h_learning_mobile/dto/request/auth.dart';
 import 'package:h_learning_mobile/query/api/auth.dart';
-import 'package:h_learning_mobile/ui/register/index.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:h_learning_mobile/router/index.dart';
 
 class LoginScreen extends StatefulWidget {
-  static const String url = "/login";
   LoginScreen({Key? key}) : super(key: key);
 
   final cc = true;
@@ -62,7 +61,7 @@ class _LoginScreen extends State<LoginScreen> {
   }
 
   void gotoRegister() {
-    Navigator.of(context).pushNamed(RegisterScreen.url);
+    rootNavigatorKey.currentState!.pushNamed(RouterName.register);
   }
 
   @override

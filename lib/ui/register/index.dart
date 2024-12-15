@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:h_learning_mobile/components/button_custom/index.dart';
 import 'package:h_learning_mobile/components/password_field_custom/index.dart';
 import 'package:h_learning_mobile/components/text_field_custom/index.dart';
-import 'package:h_learning_mobile/ui/login/index.dart';
+import 'package:h_learning_mobile/constant/router.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:h_learning_mobile/router/index.dart';
 
 class RegisterScreen extends StatefulWidget {
-  static const String url = "/register";
   RegisterScreen({Key? key}) : super(key: key);
 
   @override
@@ -19,7 +19,7 @@ class _RegisterScreen extends State<RegisterScreen> {
   Future<void> handleRegister() async {}
 
   void gotoLogin() {
-    Navigator.of(context).pushNamed(LoginScreen.url);
+    rootNavigatorKey.currentState!.pushNamed(RouterName.login);
   }
 
   @override

@@ -2,14 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:h_learning_mobile/components/tab_custom/index.dart';
 import 'package:h_learning_mobile/constant/router.dart';
+import 'package:h_learning_mobile/router/index.dart';
 import 'package:h_learning_mobile/ui/account/index.dart';
 import 'package:h_learning_mobile/ui/courses/index.dart';
 import 'package:h_learning_mobile/ui/home/index.dart';
 import 'package:h_learning_mobile/ui/my_course/index.dart';
 
 class TabHome extends StatefulWidget {
-  static const String url = RouterName.tabHome;
-
   TabHome({Key? key}) : super(key: key);
 
   @override
@@ -17,25 +16,24 @@ class TabHome extends StatefulWidget {
 }
 
 class _TabHome extends State<TabHome> {
-  String curUrl = "/home-tab";
-  final _navigatorKey = GlobalKey<NavigatorState>();
+  String curUrl = RouterName.tabHomeHome;
 
   void changeScreen(String url) {
     setState(() {
       curUrl = url;
     });
-    _navigatorKey.currentState?.pushNamed(url);
+    tabHomeGlobalKey.currentState!.pushNamed(url);
   }
 
   render(RouteSettings settings) {
     switch (settings.name) {
-      case '/home-tab':
+      case RouterName.tabHomeHome:
         return MaterialPageRoute(builder: (_) => HomeScreen());
-      case '/course-tab':
+      case RouterName.tabHomeCourse:
         return MaterialPageRoute(builder: (_) => CoursesScreen());
-      case '/my-course-tab':
+      case RouterName.tabHomeMyCourse:
         return MaterialPageRoute(builder: (_) => MyCourseScreen());
-      case '/account-tab':
+      case RouterName.tabHomeAccount:
         return MaterialPageRoute(builder: (_) => AccountScreen());
       default:
         return MaterialPageRoute(builder: (_) => Container(child: Text("404")));
@@ -56,8 +54,8 @@ class _TabHome extends State<TabHome> {
                 child: Container(
                   width: fullWidth,
                   child: Navigator(
-                    key: _navigatorKey,
-                    initialRoute: "/home-tab",
+                    key: tabHomeGlobalKey,
+                    initialRoute: RouterName.tabHomeHome,
                     onGenerateRoute: (context) => render(context),
                   ),
                 ),
@@ -71,23 +69,25 @@ class _TabHome extends State<TabHome> {
                   children: [
                     TabCustom(
                       url: "assets/icons/home-svgrepo-com.svg",
-                      active: curUrl == "/home-tab" ? true : false,
-                      onTab: () => changeScreen("/home-tab"),
+                      active: curUrl == RouterName.tabHomeHome ? true : false,
+                      onTab: () => changeScreen(RouterName.tabHomeHome),
                     ),
                     TabCustom(
                       url: "assets/icons/book-minimalistic-svgrepo-com.svg",
-                      active: curUrl == "/course-tab" ? true : false,
-                      onTab: () => changeScreen("/course-tab"),
+                      active: curUrl == RouterName.tabHomeCourse ? true : false,
+                      onTab: () => changeScreen(RouterName.tabHomeCourse),
                     ),
                     TabCustom(
                       url: "assets/icons/square-academic-cap-svgrepo-com.svg",
-                      active: curUrl == "/my-course-tab" ? true : false,
-                      onTab: () => changeScreen("/my-course-tab"),
+                      active:
+                          curUrl == RouterName.tabHomeMyCourse ? true : false,
+                      onTab: () => changeScreen(RouterName.tabHomeMyCourse),
                     ),
                     TabCustom(
                       url: "assets/icons/user-svgrepo-com.svg",
-                      active: curUrl == "/account-tab" ? true : false,
-                      onTab: () => changeScreen("/account-tab"),
+                      active:
+                          curUrl == RouterName.tabHomeAccount ? true : false,
+                      onTab: () => changeScreen(RouterName.tabHomeAccount),
                     ),
                   ],
                 ),

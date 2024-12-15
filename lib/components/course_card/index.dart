@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:h_learning_mobile/components/button_custom/index.dart';
+import 'package:h_learning_mobile/constant/router.dart';
+import 'package:h_learning_mobile/router/index.dart';
 
 class CourseCard extends StatefulWidget {
   final dynamic course;
@@ -17,6 +19,16 @@ class CourseCard extends StatefulWidget {
 
 class _CourseCard extends State<CourseCard> {
   final GlobalKey _rootKey = GlobalKey();
+
+  void gotoDetailCourse() {
+    // rootNavigatorKey.currentState?.pushNamed(
+    //   RouterName.detailCourse,
+    //   arguments: {
+    //     "id": widget.course["ID"],
+    //   },
+    // );
+    rootNavigatorKey.currentState!.pushNamed(RouterName.detailCourse);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -90,6 +102,7 @@ class _CourseCard extends State<CourseCard> {
                 width: constraint.maxWidth,
                 child: ButtonCustom(
                   text: "Đăng kí",
+                  onPressed: gotoDetailCourse,
                 ),
               );
             }),
