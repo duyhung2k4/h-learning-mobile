@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:h_learning_mobile/bloc/index.dart';
 import 'package:h_learning_mobile/config/prefs.dart';
 import 'package:h_learning_mobile/router/index.dart';
@@ -10,7 +11,18 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await dotenv.load(fileName: ".env");
   await Prefs.init();
-  runApp(RootBloc(child: MyApp()));
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]).then((_) {
+    runApp(
+      RootBloc(
+        child: RepaintBoundary(
+          child: MyApp(),
+        ),
+      ),
+    );
+  });
 }
 
 class MyApp extends StatelessWidget {

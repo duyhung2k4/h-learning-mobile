@@ -45,10 +45,13 @@ class _LoginScreen extends State<LoginScreen> {
 
       authBloc.add(LoginPending());
 
-      await AuthApi.login(LoginRequest(
-        username: usernameController.text,
-        password: passwordController.text,
-      ));
+      await AuthApi.login(
+        LoginRequest(
+          username: usernameController.text,
+          password: passwordController.text,
+        ),
+        authBloc,
+      );
 
       authBloc.add(LoginSuccess());
       Navigator.of(context).pushNamed(RouterName.tabHome);
