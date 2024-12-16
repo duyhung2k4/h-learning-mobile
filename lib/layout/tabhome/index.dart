@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:h_learning_mobile/components/tab_custom/index.dart';
 import 'package:h_learning_mobile/constant/router.dart';
-import 'package:h_learning_mobile/router/index.dart';
 import 'package:h_learning_mobile/ui/account/index.dart';
 import 'package:h_learning_mobile/ui/courses/index.dart';
 import 'package:h_learning_mobile/ui/home/index.dart';
 import 'package:h_learning_mobile/ui/my_course/index.dart';
 
 class TabHome extends StatefulWidget {
+  final GlobalKey<NavigatorState> globalKey = GlobalKey<NavigatorState>();
+
   TabHome({Key? key}) : super(key: key);
 
   @override
@@ -22,7 +23,7 @@ class _TabHome extends State<TabHome> {
     setState(() {
       curUrl = url;
     });
-    tabHomeGlobalKey.currentState!.pushNamed(url);
+    widget.globalKey.currentState!.pushNamed(url);
   }
 
   render(RouteSettings settings) {
@@ -54,7 +55,7 @@ class _TabHome extends State<TabHome> {
                 child: Container(
                   width: fullWidth,
                   child: Navigator(
-                    key: tabHomeGlobalKey,
+                    key: widget.globalKey,
                     initialRoute: RouterName.tabHomeHome,
                     onGenerateRoute: (context) => render(context),
                   ),

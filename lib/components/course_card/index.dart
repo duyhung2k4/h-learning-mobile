@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:h_learning_mobile/components/button_custom/index.dart';
 import 'package:h_learning_mobile/constant/router.dart';
 import 'package:h_learning_mobile/router/index.dart';
+import 'package:h_learning_mobile/ui/detail_course/index.dart';
 
 class CourseCard extends StatefulWidget {
   final dynamic course;
@@ -21,13 +22,12 @@ class _CourseCard extends State<CourseCard> {
   final GlobalKey _rootKey = GlobalKey();
 
   void gotoDetailCourse() {
-    // rootNavigatorKey.currentState?.pushNamed(
-    //   RouterName.detailCourse,
-    //   arguments: {
-    //     "id": widget.course["ID"],
-    //   },
-    // );
-    rootNavigatorKey.currentState!.pushNamed(RouterName.detailCourse);
+    rootNavigatorKey.currentState!.pushNamed(
+      RouterName.detailCourse,
+      arguments: ArgsCourseDetailCourse(
+        id: widget.course["ID"],
+      ),
+    );
   }
 
   @override

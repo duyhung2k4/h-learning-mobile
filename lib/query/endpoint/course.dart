@@ -9,4 +9,12 @@ class CourseEndpoint {
       header: {},
     );
   }
+
+  static EndpointConfig getDetailCourse() {
+    return EndpointConfig(
+      url: "api/v1/public/course/detail",
+      method: Method.get,
+      header: {},
+    );
+  }
 }
